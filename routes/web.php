@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('home');
+Route::get('/preinscription', function () {
+    return view('preinscription');
+})->name('preinscription')
+;Route::get('/formulaire', function () {
+    return view('formPreinscription');
+})->name('form')
+;
+
