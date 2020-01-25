@@ -16,9 +16,11 @@ Route::get('/', function () {
 })->name('home');
 Route::get('/preinscription', function () {
     return view('preinscription');
-})->name('preinscription')
-;Route::get('/formulaire', function () {
-    return view('formPreinscription');
-})->name('form')
-;
+})->name('preinscription');
+
+Route::get('/formulaire', 'EtudiantController@index')->name('form');
+Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
+Route::post('/formulaire', 'EtudiantController@index');
+
+
 

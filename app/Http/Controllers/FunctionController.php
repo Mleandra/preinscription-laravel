@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Etudiant;
-use App\Pays;
-use App\Faculte;
-use App\Diplome;
 use Illuminate\Http\Request;
+use App\Pays;
 
-class EtudiantController extends Controller
+class FunctionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,13 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $pays = Pays::all();
-        $facultes = Faculte::all();
-        $diplomes = Diplome::all();
-        return view('formPreinscription', ['pays' => $pays, 'facultes'=>$facultes , 'diplomes'=>$diplomes]);
+        //
+    }
+
+    public function region($pay_id)
+    {
+        $region = Pays::find($pay_id)->regions;
+        return response()->json(['pays'=>$region]);
     }
 
     /**
@@ -47,10 +47,10 @@ class EtudiantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Etudiant  $etudiant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Etudiant $etudiant)
+    public function show($id)
     {
         //
     }
@@ -58,10 +58,10 @@ class EtudiantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Etudiant  $etudiant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Etudiant $etudiant)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +70,10 @@ class EtudiantController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Etudiant  $etudiant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Etudiant $etudiant)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +81,10 @@ class EtudiantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Etudiant  $etudiant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Etudiant $etudiant)
+    public function destroy($id)
     {
         //
     }

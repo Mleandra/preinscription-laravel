@@ -100,12 +100,12 @@
             <hr>
             <div class="input-field col s12">
 
-                <select id="nationalité" name="nationalité"  class="" style="width:50%;" required>
-                    <option ></option>
-                    <option value="algerie">algerie</option>
-                    <option value="egypte">egypte</option>
-                    <option value="Cameroun">Cameroun</option>
-                    <option value="cote d'ivoire">cote d'ivoire</option>
+                <select id="pays" name="pays"  class="" style="width:50%;" required>
+                    <option selected disabled > </option>
+                    @foreach($pays as $pay)
+                    <option value="{{$pay->id}}">{{$pay->nom}}</option>
+                    @endforeach
+
                 </select>
                 <label>nationalité:</label>
             </div>
@@ -156,18 +156,18 @@
             <hr>
             <div class="input-field col s12">
 
-                <select id="langue" name="langue"   class="" style="width:50%;" required>
-                    <option ></option>
-                    <option value="science">Facultes des sciences</option>
-                    <option value="Lettres">Facultes des arts,Lettres et science humaines</option>
-                    <option value="education">Facultes des sciences de l'education</option>
+                <select id="faculte" name="faculte"   class="" style="width:50%;" required>
+                    @foreach($facultes as $pay)
+                        <option value="{{$pay->id}}">{{$pay->nom}}</option>
+                    @endforeach
+
                 </select>
                 <label>facultes:</label>
             </div>
             <br>
             <div class="input-field col s12">
 
-                <select id="domaines" name="domaines"   class="w3-select" style="width:50%;"required>
+                <select id="choix1" name="choix1"   class="w3-select" style="width:50%;"required>
                     <option value="" selected disabled></option>
                     <option value="mathematiques">Mathematiques</option>
                     <option value="physiques">physiques</option>
@@ -180,7 +180,7 @@
             <br>
             <div class="input-field col s12">
 
-                <select id="domaines" name="domaines"  class="w3-select" style="width:50%;" required>
+                <select id="choix2" name="choix2"  class="w3-select" style="width:50%;" required>
                     <option  value="" selected disabled></option>
                     <option value="mathematiques">Mathematiques</option>
                     <option value="physiques">physiques</option>
@@ -193,7 +193,7 @@
             <br>
             <div class="input-field col s12">
 
-                <select id="domaines" name="domaines"  class="w3-select" style="width:50%;" required>
+                <select id="choix3" name="choix3"  class="w3-select" style="width:50%;" required>
                     <option value="" selected disabled></option>
                     <option value="mathematiques">Mathematiques</option>
                     <option value="physiques">physiques</option>
@@ -232,13 +232,11 @@
         <div class="input-field col s12">
 
             <select id="typeDiplome" name="typeDiplome" class=""  style="width: 50%;"required>
-                <option value="" selected disabled></option>
-                <option value="bacc">BacC</option>
-                <option value="bad">BacD</option>
-                <option value="baA">BacA</option>
-                <option value="licence">licence</option>
-                <option value="master-1">master-1</option>
-                <option value="master-2">master-2</option>
+                <option selected disabled > </option>
+                @foreach($diplomes as $pay)
+                    <option value="{{$pay->id}}">{{$pay->type}}</option>
+                @endforeach
+
             </select>
             <label>diplome presenté:</label>
         </div>
@@ -361,6 +359,33 @@
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+    var b = $('#pays')
+    var a = $('#region')
+    console.log(b)
+
+
+    const add =(text, val) => {
+        alert(val)
+        b.remove()
+        a.append($("<option></option>").attr("value",text).text(val))
+    }
+    b.on('change', function () {
+        //alert(this.value);
+        $.ajax(
+            {
+                url : ' {{route("region")}}/' + this.value,
+                dataType: 'json',
+                success: function (response) {
+                    $.each(response.pays, function (index, value) {
+                        console.log(value.nom)
+                        $("#pays").append($("<option></option>").attr("value",value.id).text(value.nom))
+                    });
+
+                }
+
+            }
+        )
+    })
     $(document).ready(function(){
         $('.tabs').tabs(
             {/*swipeable : true,*/

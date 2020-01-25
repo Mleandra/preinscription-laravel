@@ -16,6 +16,7 @@ class CreateFilieresTable extends Migration
         Schema::create('filieres', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
+            $table->integer('faculte_id')->unsigned();
             $table->foreign('faculte_id')->references('id')->on('facultes')->onDelete('cascade');
 
 
