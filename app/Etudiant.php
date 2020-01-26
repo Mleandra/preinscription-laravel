@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etudiant extends Model
 {
+
     public  function diplome(){
         return $this->belongsTo("App\Diplome");
     }
@@ -27,5 +28,8 @@ class Etudiant extends Model
     public  function  region(){
         return $this->belongsTo("App\Region");
     }
+    protected $donne=['nom', 'prenom ','date_naissance','lieu_naissance','langue','etat_civil','adresse','telephone','nom_pere','profession_pere','nom_mere','profession_mere','nom_urgence','tel_urgence','ville_urgence','annee_diplome','exam_nomber','info_jury'
+        ,'moyenne' ,'date_delivrence','choix_1','choix_2','choix_3','region_id','niveau_id','diplome_id'
+    ];
 
 }

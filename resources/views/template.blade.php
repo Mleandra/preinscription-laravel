@@ -20,24 +20,12 @@
     <ul>
         <li><a href="{{route("home")}}">Acceuil</a></li>
         <li><a href="{{route("preinscription")}}">Preinscription</a></li>
-        <li><a href="#loginForm" class=" modal-trigger">Se connecter</a></li>
+        <li><a href="{{route("login")}}" >Se connecter</a></li>
     </ul>
 </div>
  @yield('content')
-<div class="loginForm modal " id="loginForm" style="max-height: 60%;" >
-    <form >
-        <div class="modal-content" >
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input  id="username" type="text" class="validate username" required>
-                <label for="username">Username</label>
-            </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">vpn_key</i>
-                <input id="code" type="password" class="validate code" required>
-                <label for="code">Code</label>
-            </div>
-        </div>
+
+
 
 
         <div class="modal-footer" >
