@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<form  class="container" action="">
+<form  class="container" action="{{'Etudiant'}}" method="POST">
     <div id="infos" class="container ">
         <div class="formcontainer  ">
 
@@ -52,14 +52,14 @@
             <label for="fnom">nom de famille:</label>
             <input  class="w3-input w3-animate-input" type="text"   style="width: 50%;"placeholder="Entrer votre nom" name="fnom" required>
             <br>
-            <label for="Prenom">Prenom:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="Entrer votre" name="Prenom" required>
+            <label for="prenom">Prenom:</label>
+            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="Entrer votre" name="prenom" required>
             <br>
             <label for="date de naissance">Date de naissance:</label>
             <input type="text" class="datepicker  w3-input w3-animate-input" style="width: 50%;"name="Datenaissance" requireds>
             <br>
-            <label for="naissance">lieu de naissance:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="lieu de naissance" name="naissance" required>
+            <label for="lieu naissance">lieu de naissance:</label>
+            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="lieu de naissance" name="lieunaissance" required>
             <br>
             <div class="input-field col s12">
 
@@ -172,6 +172,7 @@
             <div class="input-field col s12">
 
                 <select id="faculte" name="faculte"   class="" style="width:50%;" required>
+                    <option selected disabled> </option>
                     @foreach($facultes as $pay)
                         <option value="{{$pay->id}}">{{$pay->nom}}</option>
                     @endforeach
@@ -221,14 +222,11 @@
             <br>
             <div class="input-field col s12">
 
-                <select id="niveau" name="niveau"   class="w3-select" style="width:50%;" required>
-                    <option ></option>
-                    <option value="1">Licences 1</option>
-                    <option value="2">Licences 2 </option>
-                    <option value="2">Licences 3</option>
-                    <option value="master-1">Master-1</option>
-                    <option value="master-2">Master-2</option>
-                    <option value="doctorat">Doctorat</option>
+                <select id="niveaux" name="niveaux"   class="w3-select" style="width:50%;" required>
+                    <option selected disabled > </option>
+                    @foreach($niveaux as $pay)
+                        <option value="{{$pay->id}}">{{$pay->intitule}}</option>
+                    @endforeach
 
                 </select>
                 <label>niveau d'inscription d'etudes:</label>
@@ -255,7 +253,7 @@
             </select>
             <label>diplome presenté:</label>
         </div>
-        <label for="annee">Anné d'obtention:</label>
+        <label for="annee">Année d'obtention:</label>
         <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" name="annee" >
         <br>
         <label for="registration">Registration/exam number:</label>
@@ -289,10 +287,9 @@
             <div class="input-field col s12">
                 <select id="paiement" name="paiement"   class="" style="width:50%;" required>
                     <option > </option>
-                    <option value="om">Orange money</option>
-                    <option value="momo">Mobiles money</option>
-                    <option value="uba">UBA</option>
-                    <option value="eu">Express union</option>
+                    @foreach($paiements as $pay)
+                        <option value="{{$pay->id}}">{{$pay->operateurs}}</option>
+                    @endforeach
                 </select>
                 <label>Branches de paiement:</label>
             </div>

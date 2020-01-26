@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Etudiant;
+use App\Niveau;
 use App\Pays;
 use App\Faculte;
 use App\Diplome;
+use App\Payement;
 use Illuminate\Http\Request;
 
 class EtudiantController extends Controller
@@ -20,7 +22,9 @@ class EtudiantController extends Controller
         $pays = Pays::all();
         $facultes = Faculte::all();
         $diplomes = Diplome::all();
-        return view('formPreinscription', ['pays' => $pays, 'facultes'=>$facultes , 'diplomes'=>$diplomes]);
+        $paiements= Payement::all();
+        $niveaux = Niveau::all();
+        return view('formPreinscription', ['pays' => $pays, 'facultes'=>$facultes , 'diplomes'=>$diplomes,'paiements'=>$paiements,'niveaux'=>$niveaux]);
     }
 
     /**
@@ -41,7 +45,43 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nom' => 'required',
+            'prenom ' => 'required',
+            'date_naissance' => 'required',
+            'lieu_naissance'=> 'required',
+            'langue'=> 'required',
+            'etat_civil'=> 'required',
+            'adresse' => 'required',
+            'telephone' => 'required',
+            'nom_pere',
+            'profession_pere',
+            'nom_mere',
+            'profession_mere',
+            'nom_urgence' => 'required',
+            'tel_urgence'=> 'required',
+            'ville_urgence'=> 'required',
+            'annee_diplome'=> 'required',
+            'exam_nomber'=> 'required',
+            'info_jury'=> 'required',
+            'moyenne' ,
+            'date_delivrence'=> 'required',
+            'choix_1'=> 'required',
+            'choix_2' => 'required',
+            'choix_3'=> 'required',
+            'region_id'=> 'required',
+            'niveau_id'=> 'required',
+            'diplome_id'=> 'required'
+            ]
+        );
+        $etudiant =new Etudiant([
+            'nom' => $request->get('fnom'),
+            'prenom ' => $request->get('prenom'),
+            'date_naissance' => $request->get('Datenaissance'),
+            'lieu_naissance'=> $request->get('lieunaissance'),
+            ]);
+
+
     }
 
     /**
