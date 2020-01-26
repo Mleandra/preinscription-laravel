@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+0<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UFT-8">
@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="css/w3.css">
     <link href="css/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.min.css">
+    <style>
+        select{
+            display: block;
+            width: 100%;
+            border:0 0 1px 0;
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+        }
+        .select-wrapper input.select-dropdown, .caret{
+            display: none;
+        }
+
+        </style>
 
 </head>
 <body>
@@ -53,7 +68,7 @@
                     <option value="feminin">Feminin</option>
                     <option value="Masculin">Masculin</option>
                 </select>
-                <label>sexe:</label>
+                <label for="sexe">sexe:</label>
             </div>
             <br>
             <div class="input-field col s12">
@@ -110,9 +125,9 @@
                 <label>nationalité:</label>
             </div>
             <br>
-            <div class="input-field col s12">
+            <div class=" input-field col s12">
 
-                <select id="region" name="region"   class="" style="width:50%;" required>
+                <select id="region" name="region"    style="width:50%;" required>
                     <option ></option>
                     <option value="etrangere">etrangere</option>
                     <option value="egypte">egypte</option>
@@ -356,54 +371,57 @@
         </div>
     </div>
 </form>
+
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script>
-    var b = $('#pays')
-    var a = $('#region')
-    console.log(b)
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        var b = $('#pays')
+        var a = $('#region')
+        console.log(b)
 
 
-    const add =(text, val) => {
-        alert(val)
-        b.remove()
-        a.append($("<option></option>").attr("value",text).text(val))
-    }
-    b.on('change', function () {
-        //alert(this.value);
-        $.ajax(
-            {
-                url : ' {{route("region")}}/' + this.value,
-                dataType: 'json',
-                success: function (response) {
-                    $.each(response.pays, function (index, value) {
-                        console.log(value.nom)
-                        $("#pays").append($("<option></option>").attr("value",value.id).text(value.nom))
-                    });
+        const add =(text, val) => {
+            alert(val)
+            b.remove()
+            a.append($("<option></option>").attr("value",text).text(val))
+        }
+        b.on('change', function () {
+            //alert(this.value);
+            //a.replaceWith( "<h2>New heading</h2>" )
+            $.ajax(
+                {
+                    url : ' {{route("region")}}/' + this.value,
+                    dataType: 'json',
+                    success: function (response) {
+                        var options = []
+                        $.each(response.pays, function (index, value) {
+                            console.log(value.nom)
+                            a.append($("<option></option>").attr("value",value.id).text(value.nom))
+                        });
+                       // a.replaceWith(options.join(''));
+
+                    }
 
                 }
+            )
+        })
+        $(document).ready(function(){
+            $('.tabs').tabs(
+                {/*swipeable : true,*/
 
-            }
-        )
-    })
-    $(document).ready(function(){
-        $('.tabs').tabs(
-            {/*swipeable : true,*/
+                }
+            );
+            $('select').formSelect();
+            $('.datepicker').datepicker(
+                {format : 'yyyy-mm-dd',
+                    yearRange : 60
 
-            }
-        );
-        $('select').formSelect();
-        $('.datepicker').datepicker(
-            {format : 'yyyy-mm-dd',
-                yearRange : 60
+                }
+            );
+            $(' textarea#desciption').characterCounter();
+        });
 
-            }
-        );
-        $(' textarea#desciption').characterCounter();
-    });
-
-</script>
-
+    </script>
 
 </body>
 </html>
