@@ -32,7 +32,7 @@ Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
 Route::get('/fillieres/{faculte_id?}', 'FunctionController@filiere')->name('filieres');
 Route::get('/login', 'connexionController@connexion')->name('login');
 Route::post('/login', 'connexionController@traitement');
-
+Route::get('/deconnexion', 'connexionController@deconnexion');
 Route::get('/register', 'connexionController@register')->name('register');
 Route::post('/register', 'connexionController@create');
 

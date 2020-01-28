@@ -25,8 +25,18 @@ class connexionController extends Controller
              'email' =>request('email'),
              'password' => request('password'),
          ]);
-         var_dump($resultat);
-        return 'lea est la';
+         if ($resultat){
+             return view('admin');
+         }
+         return back()->withInput()->withErrors([
+             'email'=>'votre email ou mot de passe est incorrete',
+             'password'=>'votre email ou mot de passe est incorrete'
+         ]);
+
+    }
+    public  function deconnexion(){
+        auth()->logout();
+        return  redirect('/');
     }
 
     public function create(){
