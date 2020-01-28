@@ -38,7 +38,7 @@
                             <td>{{$etudiant->region->pays->nom}}</td>
                             <td>{{$etudiant->payement->operateurs}}</td>
                             <td>{{$etudiant->transaction}}</td>
-                            <td><a href="#" class="btn btn-primary">Voir</a></th>
+                            <td><a href="{{route('etudiant.voir', $etudiant->id)}}" class="btn btn-primary">Voir</a></th>
                             </tr>
                             @endforeach
                         </tbody>

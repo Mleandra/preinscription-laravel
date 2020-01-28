@@ -21,7 +21,7 @@ Route::get('/preinscription', function () {
     return view('preinscription');
 })->name('preinscription');
 
-Route::get('/admin', function () {
+Route::get('/admin-uy1', function () {
     return view('admin');
 })->name('admin');
 
@@ -32,6 +32,7 @@ Route::get('/filiere', 'FiliereController@index')->name('admin.filiere');
 Route::get('/admininstrateurs', 'AdminController@index')->name('admin.admin');
 Route::get('/formulaire', 'EtudiantController@index')->name('form');
 Route::post('/formulaire', 'EtudiantController@store');
+Route::get('/formulaire/{id}', 'EtudiantController@show')->name('etudiant.voir');
 Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
 Route::get('/fillieres/{faculte_id?}', 'FunctionController@filiere')->name('filieres');
 Route::get('/login', 'connexionController@connexion')->name('login');

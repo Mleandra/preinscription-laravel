@@ -130,7 +130,7 @@ class EtudiantController extends Controller
             ]);
         $etudiant->save();
 
-        return redirect('');
+        return redirect()->route('etudiant.voir', ['id' => $etudiant->id]);
 
     }
 
@@ -140,9 +140,10 @@ class EtudiantController extends Controller
      * @param  \App\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function show(Etudiant $etudiant)
+    public function show($etudiant)
     {
-        //
+
+        return view('fiche', ['etudiant' => Etudiant::find($etudiant)]);
     }
 
     /**
