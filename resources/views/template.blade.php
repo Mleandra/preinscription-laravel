@@ -28,12 +28,6 @@
 
 
 
-        <div class="modal-footer" >
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">annuler</a>
-            <a href="" class="modal-close waves-effect waves-green btn-flat">Connexion</a>
-        </div>
-    </form>
-</div>
 
 
 <footer class="page-footer grey darken-4">
