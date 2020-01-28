@@ -14,7 +14,7 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        //
+        return view('filieres', ['etudiants' => Filiere::all()]);
     }
 
     /**

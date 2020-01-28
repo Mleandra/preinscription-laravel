@@ -8,12 +8,12 @@
     <meta name="author" content="" />
     <title> Admin-uy1</title>
     <link href="css/styles2.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="/js/all.min.js"></script>
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">Admin-uy1</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+    <a class="navbar-brand" href="{{route('admin')}}">Admin-uy1</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
     ><!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -29,7 +29,7 @@
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{route('login')}}">Logout</a>
+                <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
             </div>
         </li>
     </ul>
@@ -39,45 +39,22 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard</a>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
-
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                        </nav>
-                    </div>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Pages
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">Authentication
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('register')}}">Ajouter un admin</a>
-                                </nav>
-                            </div>
 
 
-
-                        </nav>
-                    </div>
                     <div class="sb-sidenav-menu-heading">Actions</div>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('admin.faculte')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        ajouter Facultes</a>
-                    <a class="nav-link" href="">
+                        Facultes</a>
+                    <a class="nav-link" href="{{route('admin.filiere')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        ajouter Filiereq</a>
+                        Filieres</a>
 
-                    <a class="nav-link" href="{{route('etudiant')}}">
+                    <a class="nav-link" href="{{route('admin.etudiant')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Etudiant</a>
+                        Etudiants</a>
+                        <a class="nav-link" href="{{route('admin.admin')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-person"></i></div>
+                                Administrateur</a>
                 </div>
             </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Etudiant;
 use App\Niveau;
+use App\Region;
 use App\Pays;
 use App\Faculte;
 use App\Diplome;
@@ -88,10 +89,17 @@ class EtudiantController extends Controller
             'new-region' => 'required_if:region,0'
             ]
         );
-
+        $region_id = $request->get('region');
+        if ($region_id == '0') {
+         $region = new Region();
+         $region->pays_id = $request->get('pays');
+        $region->nom = $request->get('new-region');
+        $region->save();
+        $region_id = $region->id;
+        }
         $etudiant =new Etudiant([
             'nom' => $request->get('nom'),
-            'prenom ' => $request->get('prenom'),
+            'prenom' => $request->get('prenom'),
             'date_naissance' => $request->get('date_naissance'),
             'lieu_naissance'=> $request->get('date_naissance'),
             'langue'=> $request->get('langue'),
@@ -113,10 +121,12 @@ class EtudiantController extends Controller
             'choix_1'=> $request->get('choix1'),
             'choix_2'=> $request->get('choix2'),
             'choix_3'=> $request->get('choix3'),
-            'region_id'=> $request->get('region'),
+            'region_id'=> $region_id,
             'niveau_id'=> $request->get('niveau'),
             'diplome_id'=> $request->get('type_diplome'),
-
+            'paiement_id'=> $request->get('paiement'),
+            'transaction'=> $request->get('transaction'),
+            'sexe'=> $request->get('sexe'),
             ]);
         $etudiant->save();
 
@@ -167,5 +177,10 @@ class EtudiantController extends Controller
     public function destroy(Etudiant $etudiant)
     {
         //
+    }
+
+    public function admin()
+    {
+        return view('etudiant', ['etudiants' => Etudiant::all()]);
     }
 }

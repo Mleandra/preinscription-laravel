@@ -2,27 +2,23 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Etudiants</h1>
+        <h1 class="mt-4">Filieres</h1>
         <ol class="breadcrumb mb-4">
 
-            <li class="breadcrumb-item active">Etudiants</li>
+            <li class="breadcrumb-item active">Fillieres</li>
+
         </ol>
 
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>Liste etudiants</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Liste des filieres</div>
+            <a href="#" class="btn btn-primary" >Ajouter</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>date de naissance</th>
-                            <th>niveau</th>
-                            <th>diplome</th>
-                            <th>nationalite</th>
-                            <th> agence de paiement</th>
-                            <th>code payement</th>
+                            <th>Faculte</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -31,13 +27,7 @@
                             @foreach ($etudiants as $etudiant)
                             <tr>
                             <td>{{$etudiant->nom}}</td>
-                            <td>{{$etudiant->prenom}}</td>
-                            <td>{{$etudiant->date_naissance}}</td>
-                            <td>{{$etudiant->niveau->intitule}}</td>
-                            <td>{{$etudiant->diplome->type}}</td>
-                            <td>{{$etudiant->region->pays->nom}}</td>
-                            <td>{{$etudiant->payement->operateurs}}</td>
-                            <td>{{$etudiant->transaction}}</td>
+                            <td>{{$etudiant->faculte->nom}}</td>
                             <td><a href="#" class="btn btn-primary">Voir</a></th>
                             </tr>
                             @endforeach

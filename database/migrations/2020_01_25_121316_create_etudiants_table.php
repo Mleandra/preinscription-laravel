@@ -16,7 +16,7 @@ class CreateEtudiantsTable extends Migration
         Schema::create('etudiants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->string('prenom ');
+            $table->string('prenom');
             $table->date('date_naissance');
             $table->string('lieu_naissance');
             $table->string('langue');
@@ -41,6 +41,10 @@ class CreateEtudiantsTable extends Migration
             $table->integer('region_id')->unsigned();
             $table->integer('niveau_id')->unsigned();
             $table->integer('diplome_id')->unsigned();
+            $table->integer('paiement_id')->unsigned();
+            $table->string('transaction');
+            $table->string('sexe');
+            $table->foreign('paiement_id')->references('id')->on('payements')->onDelete('cascade');
             $table->foreign('choix_1')->references('id')->on('filieres')->onDelete('cascade');
             $table->foreign('choix_2')->references('id')->on('filieres')->onDelete('cascade');
             $table->foreign('choix_3')->references('id')->on('filieres')->onDelete('cascade');

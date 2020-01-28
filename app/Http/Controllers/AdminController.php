@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Faculte;
 use Illuminate\Http\Request;
+use App\User;
 
-class FaculteController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class FaculteController extends Controller
      */
     public function index()
     {
-        return view('facultes', ['etudiants' => Faculte::all()]);
+        return view('administrateur', ['etudiants' => User::all()]);
     }
 
     /**
@@ -41,10 +41,10 @@ class FaculteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Faculte  $faculte
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Faculte $faculte)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class FaculteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Faculte  $faculte
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Faculte $faculte)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class FaculteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Faculte  $faculte
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Faculte $faculte)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class FaculteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Faculte  $faculte
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Faculte $faculte)
+    public function destroy($id)
     {
         //
     }
