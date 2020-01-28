@@ -111,7 +111,7 @@
             <input type="email"  value="{{ old('email') }}" class="w3-input w3-animate-input infos"  style="width: 50%;"placeholder="Email" name="email" required>
             <br>
 
-            <span class="btn waves-effect waves-light teal right" onclick="Next('infos')">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('infos')">Suivant
                 <i class="material-icons right">send</i>
             </span>
             <br> <br>
@@ -168,7 +168,7 @@
             <label for="fnom"><b>ville de residence de la personne:</b></label>
             <input type="text" class="w3-input w3-animate-input filiation" style="width: 50%;" name="ville_urgence" required value="{{ old('ville_urgence') }}">
             <br>
-            <span class="btn waves-effect waves-light teal right" onclick="Next('filiation')">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('filiation')">Suivant
                 <i class="material-icons right">send</i>
             </span>
         </div>
@@ -229,7 +229,7 @@
                 <label>niveau d'inscription d'etudes:</label>
             </div>
             <br><br>
-            <span class="btn waves-effect waves-light teal right" onclick="Next('facultes')">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('facultes')">Suivant
                 <i class="material-icons right">send</i>
             </span>
             <br> <br>
@@ -271,7 +271,7 @@
         <input type="number" class=" diplome w3-input " name="paper" >
 
         <br>
-        <span class="btn waves-effect waves-light teal right" onclick="Next('diplome')">valider
+        <span class="btn waves-effect waves-light teal right" onclick="Next('diplome')">Suivant
             <i class="material-icons right">send</i>
         </button>
 

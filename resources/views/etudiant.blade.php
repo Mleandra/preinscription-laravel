@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h1 class="mt-4">Etudiants</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+
             <li class="breadcrumb-item active">Etudiants</li>
         </ol>
 
@@ -26,18 +26,21 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
 
+                        <tbody>
+                            @foreach ($etudiants as $etudiant)
+                            <tr>
+                            <td>{{$etudiant->nom}}</td>
+                            <td>{{$etudiant->prenom}}</td>
+                            <td>{{$etudiant->date_naissance}}</td>
+                            <td>{{$etudiant->niveau->intitule}}</td>
+                            <td>{{$etudiant->diplome->type}}</td>
+                            <td>{{$etudiant->region->pays->nom}}</td>
+                            <td>{{$etudiant->payement->operateurs}}</td>
+                            <td>{{$etudiant->transaction}}</td>
+                            <td><a href="{{route('etudiant.voir', $etudiant->id)}}" class="btn btn-primary">Voir</a></th>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
