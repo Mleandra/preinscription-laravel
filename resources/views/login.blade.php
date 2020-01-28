@@ -22,11 +22,20 @@
                                     <div class="card-body">
                                         <form action="/login"  method="post">
                                             {{csrf_field()}}
-                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" name="email" placeholder="Entrer votre address mail" /></div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" name="email" placeholder="Entrer votre address mail" />
+                                            </div>
+                                            @if($errors->has('email'))
+                                                <p style="color:red;">{{$errors->first('email')}}</p>
+                                            @endif
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" name=password type="password" placeholder="Enter password" /></div>
+                                            @if($errors->has('password'))
+                                                <p style="color:red;">{{$errors->first('password')}}</p>
+                                            @endif
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
                                             </div>
+
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Forgot Password?</a>
                                                 <button class="btn btn-primary" type="submit">Login</button>
                                                 </div>
