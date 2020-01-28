@@ -24,15 +24,17 @@ Route::get('/admin-uy1', function () {
 Route::get('/gestionEtudiants', function () {
     return view('etudiant');
 })->name('etudiant');
-Route::get('/sign in', function () {
-    return view('register');
-})->name('register');
-Route::get('/login', 'connexionController@connexion')->name('login');
+
+
 Route::get('/formulaire', 'EtudiantController@index')->name('form');
 Route::post('/formulaire', 'EtudiantController@store');
 Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
 Route::get('/fillieres/{faculte_id?}', 'FunctionController@filiere')->name('filieres');
+Route::get('/login', 'connexionController@connexion')->name('login');
 Route::post('/login', 'connexionController@traitement');
+
+Route::get('/register', 'connexionController@register')->name('register');
+Route::post('/register', 'connexionController@create');
 
 
 
