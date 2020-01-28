@@ -17,9 +17,7 @@ Route::get('/', function () {
 Route::get('/preinscription', function () {
     return view('preinscription');
 })->name('preinscription');
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+
 Route::get('/admin-uy1', function () {
     return view('admin');
 })->name('admin');
@@ -29,9 +27,13 @@ Route::get('/gestionEtudiants', function () {
 Route::get('/sign in', function () {
     return view('register');
 })->name('register');
+Route::get('/login', 'connexionController@connexion')->name('login');
 Route::get('/formulaire', 'EtudiantController@index')->name('form');
 Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
+Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
+Route::get('/fillieres/{faculte_id?}', 'FunctionController@filiere')->name('filieres');
 Route::post('/formulaire', 'EtudiantController@index');
+Route::post('/login', 'connexionController@traitement');
 
 
 

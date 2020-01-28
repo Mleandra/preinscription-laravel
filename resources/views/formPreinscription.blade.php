@@ -8,11 +8,34 @@
     <link rel="stylesheet" href="css/w3.css">
     <link href="css/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.min.css">
+    <style>
+        select{
+            display: block;
+            width: 100%;
+            border:0 0 1px 0;
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+        }
+        .select-wrapper input.select-dropdown, .caret{
+            display: none;
+        }
+
+        </style>
 
 </head>
 <body>
 <header>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </header>
 <div class="row ">
     <div class="col s12  grey darken-4">
@@ -26,7 +49,8 @@
     </div>
 </div>
 
-<form  class="container" action="{{'Etudiant'}}" method="POST">
+<form  class="container" action="{{route('form')}}" method="POST" id="form">
+   {{ csrf_field() }}
     <div id="infos" class="container ">
         <div class="formcontainer  ">
 
@@ -35,30 +59,30 @@
 
             <br>
             <label for="fnom">nom de famille:</label>
-            <input  class="w3-input w3-animate-input" type="text"   style="width: 50%;"placeholder="Entrer votre nom" name="fnom" required>
+            <input  value="{{ old('nom') }}"class="w3-input w3-animate-input infos"  type="text"   style="width: 50%;"placeholder="Entrer votre nom" name="nom" required>
             <br>
             <label for="prenom">Prenom:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="Entrer votre" name="prenom" required>
+            <input value="{{ old('prenom') }}" type="text" class="w3-input w3-animate-input infos"   style="width: 50%;" placeholder="Entrer votre" name="prenom" required>
             <br>
             <label for="date de naissance">Date de naissance:</label>
-            <input type="text" class="datepicker  w3-input w3-animate-input" style="width: 50%;"name="Datenaissance" requireds>
+            <input type="text" class="datepicker  w3-input w3-animate-input infos"  style="width: 50%;"name="date_naissance" value="{{ old('date_naissance') }}" requireds>
             <br>
             <label for="lieu naissance">lieu de naissance:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="lieu de naissance" name="lieunaissance" required>
+            <input type="text" class="w3-input w3-animate-input infos"   class="" style="width: 50%;" placeholder="lieu de naissance" name="lieu_naissance" value="{{ old('lieu_naissance') }}" required>
             <br>
             <div class="input-field col s12">
 
-                <select id="sexe"  class="w3-select "  style="width: 50%;" name="sexe" required>
+                <select id="sexe"  class="w3-select  infos"  " style="width: 50%;" name="sexe" required>
                     <option value="" selected disabled></option>
-                    <option value="feminin">Feminin</option>
-                    <option value="Masculin">Masculin</option>
+                    <option value="F">Feminin</option>
+                    <option value="M">Masculin</option>
                 </select>
-                <label>sexe:</label>
+                <label for="sexe">sexe:</label>
             </div>
             <br>
             <div class="input-field col s12">
 
-                <select id="etat" name="etat"  class=""  style="width: 50%;"required>
+                <select id="etat" name="etat_civil"   class="infos" style="width: 50%;"required>
                     <option value="" selected disabled></option>
                     <option value="Marié">Marié(e)</option>
                     <option value="celibataire">celibataire</option>
@@ -68,7 +92,7 @@
             <br>
 
             <div class="input-field col s12">
-                <select id="langue"    style="width: 50%;"name="langue" required>
+                <select id="langue"    style="width: 50%;"name="langue" required  class="infos">
                     <option  value="" selected disabled></option>
                     <option value="anglais">Anglais</option>
                     <option value="francais">Francais</option>
@@ -77,19 +101,19 @@
             </div>
             <br>
             <label for="adresse">Adresse:</label>
-            <input type="text" placeholder="Adresse" name="adresse" class="w3-input w3-animate-input"   style="width: 50%;" required>
+            <input type="text" value="{{ old('adresse') }}" placeholder="Adresse" name="adresse" class="w3-input w3-animate-input infos"   style="width: 50%;" required>
             <br>
 
             <label for="Telephone">Telephone:</label>
-            <input type="text" placeholder="telephone"   class="w3-input w3-animate-input" style="width: 50%;" name="telephone" required>
+            <input type="text" value="{{ old('telephone') }}" placeholder="telephone"   class="w3-input w3-animate-input infos" style="width: 50%;" name="telephone" required>
             <br>
             <label for="mail">Email:</label>
-            <input type="email" class="w3-input w3-animate-input"  style="width: 50%;"placeholder="Email" name="mail" required>
+            <input type="email"  value="{{ old('email') }}" class="w3-input w3-animate-input infos"  style="width: 50%;"placeholder="Email" name="email" required>
             <br>
 
-            <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('infos')">valider
                 <i class="material-icons right">send</i>
-            </button>
+            </span>
             <br> <br>
         </div>
     </div>
@@ -100,7 +124,7 @@
             <hr>
             <div class="input-field col s12">
 
-                <select id="pays" name="pays"  class="" style="width:50%;" required>
+                <select id="pays" name="pays"  class="filiation" style="width:50%;" required>
                     <option selected disabled > </option>
                     @foreach($pays as $pay)
                     <option value="{{$pay->id}}">{{$pay->nom}}</option>
@@ -110,39 +134,43 @@
                 <label>nationalité:</label>
             </div>
             <br>
-            <div class="input-field col s12">
+            <div class=" input-field col s12">
 
-                <select id="region" name="region"   class="" style="width:50%;" required>
-                    <option selected disabled ></option>
+                <select id="region" name="region" class="filiation"   style="width:50%;" required>
+                    <option ></option>
 
                 </select>
                 <label>region d'origine:</label>
             </div>
+            <div class="input-field" id="nouvelle-region" style="display:none">
+            <label for="new-region">Region:</label>
+            <input type="text" value="{{ old('new_region') }}" placeholder="Precisez la region" name="new-region" class="filiation w3-input w3-animate-input"   style="width: 50%;" required>
+            </div>
             <br>
             <label for="pnom">Nom du pere:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="Entrer le nom de votre pere" name="pnom" >
+            <input type="text" class="w3-input w3-animate-input filiation"  style="width: 50%;" placeholder="Entrer le nom de votre pere" name="nom_pere"  value="{{ old('nom_pere') }}">
             <br>
             <label for="fnom">Profession du pere :</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="profession" name="profession" >
+            <input type="text" class="w3-input w3-animate-input filiation"  style="width: 50%;" placeholder="profession" name="profession_pere" value="{{ old('profession_pere') }}">
             <br>
             <label for="mnom">nom de la mere:</label>
-            <input type="text"  class="w3-input w3-animate-input"  style="width: 50%;" placeholder="Entrer le nom de votre mere" name="mnom" >
+            <input type="text"  class="w3-input w3-animate-input filiation"  style="width: 50%;" placeholder="Entrer le nom de votre mere" name="nom_mere" value="{{ old('nom_mere') }}">
             <br>
             <label for="fnom">profession de la mere:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" placeholder="profession" name="profession" >
+            <input type="text" class="w3-input w3-animate-input filiation"  style="width: 50%;" placeholder="profession" name="profession_mere" value="{{ old('profession_mere') }}">
             <br>
             <label for="fnom">personne a contactée en cas d'urgence:</label>
-            <input type="text" class="w3-input w3-animate-input"  style="width: 50%;"name="urgence" required>
+            <input type="text" class="w3-input w3-animate-input filiation"  style="width: 50%;"name="nom_urgence" required value="{{ old('nom_urgence') }}">
             <br>
             <label for="fnom"><b>telephone de la personne:</b></label>
-            <input type="text" class="w3-input w3-animate-input" style="width: 50%;" name="telurgence" required>
+            <input type="text" class="w3-input w3-animate-input filiation" style="width: 50%;" name="tel_urgence" required value="{{ old('tel_urgence') }}">
             <br>
             <label for="fnom"><b>ville de residence de la personne:</b></label>
-            <input type="text" class="w3-input w3-animate-input" style="width: 50%;" name="villeurgence" required>
+            <input type="text" class="w3-input w3-animate-input filiation" style="width: 50%;" name="ville_urgence" required value="{{ old('ville_urgence') }}">
             <br>
-            <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('filiation')">valider
                 <i class="material-icons right">send</i>
-            </button>
+            </span>
         </div>
     </div>
 
@@ -152,7 +180,7 @@
             <hr>
             <div class="input-field col s12">
 
-                <select id="faculte" name="faculte"   class="" style="width:50%;" required>
+                <select id="faculte" name="faculte"   class="facultes" style="width:50%;" required>
                     <option selected disabled> </option>
                     @foreach($facultes as $pay)
                         <option value="{{$pay->id}}">{{$pay->nom}}</option>
@@ -164,46 +192,34 @@
             <br>
             <div class="input-field col s12">
 
-                <select id="choix1" name="choix1"   class="w3-select" style="width:50%;"required>
+                <select id="choix1" name="choix1"   class="w3-select facultes" style="width:50%;"required>
                     <option value="" selected disabled></option>
-                    <option value="mathematiques">Mathematiques</option>
-                    <option value="physiques">physiques</option>
-                    <option value="informatiques">Informatiques</option>
-                    <option value="geos">Geo-sciences</option>
-                    <option value="Bios">bio-sciences</option>
+
                 </select>
                 <label>1er choix de domaines:</label>
             </div>
             <br>
             <div class="input-field col s12">
 
-                <select id="choix2" name="choix2"  class="w3-select" style="width:50%;" required>
+                <select id="choix2" name="choix2"  class="w3-select facultes" style="width:50%;" required>
                     <option  value="" selected disabled></option>
-                    <option value="mathematiques">Mathematiques</option>
-                    <option value="physiques">physiques</option>
-                    <option value="informatiques">Informatiques</option>
-                    <option value="geos">Geo-sciences</option>
-                    <option value="Bios">bio-sciences</option>
+
                 </select>
                 <label>2eme choix de domaines:</label>
             </div>
             <br>
             <div class="input-field col s12">
 
-                <select id="choix3" name="choix3"  class="w3-select" style="width:50%;" required>
+                <select id="choix3" name="choix3"  class="w3-select facultes" style="width:50%;" required>
                     <option value="" selected disabled></option>
-                    <option value="mathematiques">Mathematiques</option>
-                    <option value="physiques">physiques</option>
-                    <option value="informatiques">Informatiques</option>
-                    <option value="geos">Geo-sciences</option>
-                    <option value="Bios">bio-sciences</option>
+                    <
                 </select>
                 <label>3eme choix de domaines:</label>
             </div>
             <br>
             <div class="input-field col s12">
 
-                <select id="niveaux" name="niveaux"   class="w3-select" style="width:50%;" required>
+                <select id="niveaux" name="niveau"   class="w3-select facultes" style="width:50%;" required>
                     <option selected disabled > </option>
                     @foreach($niveaux as $pay)
                         <option value="{{$pay->id}}">{{$pay->intitule}}</option>
@@ -213,9 +229,9 @@
                 <label>niveau d'inscription d'etudes:</label>
             </div>
             <br><br>
-            <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
+            <span class="btn waves-effect waves-light teal right" onclick="Next('facultes')">valider
                 <i class="material-icons right">send</i>
-            </button>
+            </span>
             <br> <br>
         </div>
     </div>
@@ -225,7 +241,7 @@
         <hr>
         <div class="input-field col s12">
 
-            <select id="typeDiplome" name="typeDiplome" class=""  style="width: 50%;"required>
+            <select id="typeDiplome" name="type_diplome" class="diplome"  style="width: 50%;"required>
                 <option selected disabled > </option>
                 @foreach($diplomes as $pay)
                     <option value="{{$pay->id}}">{{$pay->type}}</option>
@@ -235,27 +251,27 @@
             <label>diplome presenté:</label>
         </div>
         <label for="annee">Année d'obtention:</label>
-        <input type="text" class="w3-input w3-animate-input"  style="width: 50%;" name="annee" >
+        <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;" name="annee_diplome" required value="{{ old('annee_diplome') }}">
         <br>
         <label for="registration">Registration/exam number:</label>
-        <input type="text" class="w3-input w3-animate-input"  style="width: 50%;"  name="registration" >
+        <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="exam_number" required value="{{ old('exam_number') }}">
         <br>
         <label for="jury">information sur le jury:</label>
-        <input type="text" class="w3-input w3-animate-input"  style="width: 50%;"  name="jury" >
+        <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="infos_jury" required value="{{ old('infos_jury') }}">
         <br>
-        <label for="issuer">Matricuke dilplome:</label>
-        <input type="text" class="w3-input w3-animate-input"  style="width: 50%;"  name="issuer" >
+        <label for="issuer">Matricule dilplome:</label>
+        <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="issuer" >
 
         <br>
         <label for="issuerDate">Date de delivrance:</label>
-        <input type="text" class=" datepicker  w3-input w3-animate-input"  style="width: 50%;"  name="issuerDate" >
+        <input type="text" class=" datepicker  w3-input w3-animate-input diplome"  style="width: 50%;"  name="date_delivrance" required value="{{ old('date_delivrance') }}">
 
         <br>
         <label for="paper">nombrer de papier reussie</label>
-        <input type="number" class="  w3-input " name="paper" >
+        <input type="number" class=" diplome w3-input " name="paper" >
 
         <br>
-        <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
+        <span class="btn waves-effect waves-light teal right" onclick="Next('diplome')">valider
             <i class="material-icons right">send</i>
         </button>
 
@@ -277,7 +293,7 @@
             <br>
 
             <label for="transaction">N° de transaction:</label>
-            <input type="text" class="w3-input w3-animate-input" style="width: 50%;" name="transaction" required>
+            <input type="text" class="w3-input w3-animate-input" style="width: 50%;" name="transaction" required value="{{ old('transaction') }}">
 
             <hr>
             <h3 class="teal-text text-lighten-2  w3-container">informations diverses</h3>
@@ -344,59 +360,140 @@
             <br>
             <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
                 <i class="material-icons right">send</i>
-            </button>
+            </span>
             <br> <br>
         </div>
     </div>
 </form>
+
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script>
-    var b = $('#pays')
-    var a = $('#region')
-    console.log(b)
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        var pays = $('#pays')
+        var faculte = $('#faculte')
+        var region = $('#region')
 
 
-    const add =(text, val) => {
-        alert(val)
-        b.remove()
-        a.append($("<option></option>").attr("value",text).text(val))
-    }
-    b.on('change', function () {
-        //alert(this.value);
-        $.ajax(
-            {
-                url : ' {{route("region")}}/' + this.value,
-                dataType: 'json',
-                success: function (response) {
-                    $.each(response.pays, function (index, value) {
-                        console.log(value.nom)
-                        $("#pays").append($("<option></option>").attr("value",value.id).text(value.nom))
-                    });
+
+
+        const add =(id, val, text) => {
+            var a = $('#'+id)
+            a.append($("<option></option>").attr("value",val).text(text))
+        }
+        pays.on('change', function () {
+            $.ajax(
+                {
+                    url : ' {{route("region")}}/' + this.value,
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#region')
+    .find('option')
+    .remove()
+    .end()
+                        var options = []
+                        region.append($("<option></option>").attr("selected",true).attr("disabled",true).attr("selected",true).text("Selectionnez"))
+                        $.each(response.pays, function (index, value) {
+                            console.log(value.nom)
+                           add('region', value.id, value.nom)
+                        });
+                        if (response.pays.length < 1) {
+                            add('region', 0, 'Autre')
+                        }
+
+                    }
 
                 }
+            )
+        })
+        region.on('change', function () {
+            input = $('input[name="new-region"]')
+         if(this.value ==0) {
+         $('#nouvelle-region').show()
+         input.attr( "required", true );
+         } else {
+            $('#nouvelle-region').hide()
+            input.removeAttr( "required" )
+         }
+        })
+        faculte.on('change', function () {
 
-            }
-        )
-    })
-    $(document).ready(function(){
-        $('.tabs').tabs(
-            {/*swipeable : true,*/
+            $.ajax(
+                {
+                    url : ' {{route("filieres")}}/' + this.value,
+                    dataType: 'json',
+                    success: function (response) {
+                        var options = []
+                        $('#choix1')
+    .find('option')
+    .remove()
+    .end()
+    $('#choix2')
+    .find('option')
+    .remove()
+    .end()
+    $('#choix3')
+    .find('option')
+    .remove()
+    .end()
+                        $.each(response.filieres, function (index, value) {
+                            console.log(value.nom)
 
-            }
-        );
-        $('select').formSelect();
-        $('.datepicker').datepicker(
-            {format : 'yyyy-mm-dd',
-                yearRange : 60
+                           add('choix1', value.id, value.nom)
+                           add('choix2', value.id, value.nom)
+                           add('choix3', value.id, value.nom)
+                        });
 
-            }
-        );
-        $(' textarea#desciption').characterCounter();
-    });
+                    }
 
-</script>
+                }
+            )
+        })
+        $(document).ready(function(){
+            $('.tabs').tabs(
+                {/*swipeable : true,*/
 
+                }
+            );
+            $('select').formSelect();
+            $('.datepicker').datepicker(
+                {format : 'yyyy-mm-dd',
+                    yearRange : 60
+
+                }
+            );
+            $(' textarea#desciption').characterCounter();
+        });
+        function Next(value) {
+    var blnNext = true;
+    var form = document.getElementById('form');
+    var div = document.getElementById(value);
+    var inputs = div.querySelectorAll('.'+value);
+    console.log(value)
+
+    for (index = 0; index < inputs.length; ++index) {
+        if (!inputs[index].validity.valid) {
+            console.log(inputs[index])
+            blnNext = false;
+            form.querySelectorAll('button[type="submit"]')[0].click(); //Force the form to try and submit so we get error messages
+        }
+    }
+    if (blnNext) {
+        if (value == 'infos') {
+            document.getElementsByClassName('tab')[1].querySelector('.formlinks').click()
+        }
+        if (value == 'filiation') {
+            document.getElementsByClassName('tab')[2].querySelector('.formlinks').click()
+        }
+        if (value == 'facultes') {
+            document.getElementsByClassName('tab')[3].querySelector('.formlinks').click()
+        }
+        if (value == 'diplome') {
+            document.getElementsByClassName('tab')[4].querySelector('.formlinks').click()
+        }
+        blnNext = false
+
+}}
+    </script>
 
 </body>
 </html>
