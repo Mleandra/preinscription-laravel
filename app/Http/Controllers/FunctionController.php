@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pays;
+use App\Faculte;
 
 
 class FunctionController extends Controller
@@ -22,6 +23,12 @@ class FunctionController extends Controller
     {
         $region = Pays::find($pay_id)->regions;
         return response()->json(['pays'=>$region]);
+    }
+
+    public function filiere($pay_id)
+    {
+        $filieres = Faculte::find($pay_id)->filieres;
+        return response()->json(['filieres'=>$filieres]);
     }
 
     /**

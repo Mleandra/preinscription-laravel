@@ -34,7 +34,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,15 +45,19 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'nom' => 'required',
-            'prenom ' => 'required',
+            'prenom' => 'required',
             'date_naissance' => 'required',
             'lieu_naissance'=> 'required',
+            'sexe'=> 'required',
             'langue'=> 'required',
             'etat_civil'=> 'required',
             'adresse' => 'required',
             'telephone' => 'required',
+            'email'=> 'required',
+
             'nom_pere',
             'profession_pere',
             'nom_mere',
@@ -61,26 +65,62 @@ class EtudiantController extends Controller
             'nom_urgence' => 'required',
             'tel_urgence'=> 'required',
             'ville_urgence'=> 'required',
+            'faculte'=> 'required',
+            'choix1'=> 'required',
+            'choix2' => 'required',
+            'choix3'=> 'required',
+            'niveau'=> 'required',
+            'type_diplome'=> 'required',
             'annee_diplome'=> 'required',
-            'exam_nomber'=> 'required',
-            'info_jury'=> 'required',
+            'date_delivrance'=> 'required',
+            'infos_jury'=> 'required',
+            'exam_number'=> 'required',
+            'paiement'=> 'required',
+            'transaction'=> 'required',
+
+
             'moyenne' ,
-            'date_delivrence'=> 'required',
-            'choix_1'=> 'required',
-            'choix_2' => 'required',
-            'choix_3'=> 'required',
-            'region_id'=> 'required',
-            'niveau_id'=> 'required',
-            'diplome_id'=> 'required'
+
+
+
+            'pays' => 'required',
+            'region' => 'required',
+            'new-region' => 'required_if:region,0'
             ]
         );
-        $etudiant =new Etudiant([
-            'nom' => $request->get('fnom'),
-            'prenom ' => $request->get('prenom'),
-            'date_naissance' => $request->get('Datenaissance'),
-            'lieu_naissance'=> $request->get('lieunaissance'),
-            ]);
 
+        $etudiant =new Etudiant([
+            'nom' => $request->get('nom'),
+            'prenom ' => $request->get('prenom'),
+            'date_naissance' => $request->get('date_naissance'),
+            'lieu_naissance'=> $request->get('date_naissance'),
+            'langue'=> $request->get('langue'),
+            'etat_civil'=> $request->get('etat_civil'),
+            'adresse'=> $request->get('adresse'),
+            'telephone'=> $request->get('telephone'),
+            'nom_pere'=> $request->get('nom_pere'),
+            'profession_pere'=> $request->get('profession_pere'),
+            'profession_mere'=> $request->get('profession_mere'),
+            'nom_mere'=> $request->get('nom_mere'),
+            'nom_urgence'=> $request->get('nom_urgence'),
+            'tel_urgence'=> $request->get('tel_urgence'),
+            'ville_urgence'=> $request->get('ville_urgence'),
+            'annee_diplome'=> $request->get('annee_diplome'),
+            'exam_nomber'=> $request->get('exam_number'),
+            'info_jury'=> $request->get('infos_jury'),
+            'moyenne'=> $request->get('moyenne'),
+            'date_delivrence'=> $request->get('date_delivrance'),
+            'choix_1'=> $request->get('choix1'),
+            'choix_2'=> $request->get('choix2'),
+            'choix_3'=> $request->get('choix3'),
+            'region_id'=> $request->get('region'),
+            'niveau_id'=> $request->get('niveau'),
+            'diplome_id'=> $request->get('type_diplome'),
+
+            ]);
+        $etudiant->save();
+
+        return redirect('');
 
     }
 

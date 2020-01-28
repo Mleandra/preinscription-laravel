@@ -30,8 +30,10 @@ Route::get('/sign in', function () {
     return view('register');
 })->name('register');
 Route::get('/formulaire', 'EtudiantController@index')->name('form');
+Route::post('/formulaire', 'EtudiantController@store');
 Route::get('/region/{pays_id?}', 'FunctionController@region')->name('region');
-Route::post('/formulaire', 'EtudiantController@index');
+Route::get('/fillieres/{faculte_id?}', 'FunctionController@filiere')->name('filieres');
+
 
 
 
