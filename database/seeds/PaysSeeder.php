@@ -8,6 +8,7 @@ use App\Filiere;
 use App\Diplome;
 use App\Payement;
 use App\Niveau;
+use App\User;
 class PaysSeeder extends Seeder
 {
     /**
@@ -145,6 +146,11 @@ class PaysSeeder extends Seeder
         ]);
         Niveau::create([
             'intitule' => 'Master',
+        ]);
+        User::create([
+            'name'=>'Admin',
+            'email'=>'admin@admin.cm',
+            'password'=>Hash::make('123456'),
         ]);
     }
 }

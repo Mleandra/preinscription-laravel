@@ -2,21 +2,28 @@
 <html>
     <head>
         <title></title>
+        <link href="css/icon.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/w3.css">
+        <link rel="stylesheet" href="/css/fiche.css">
+        <link rel="stylesheet" href="/css/materialize.min.css">
     </head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/w3.css">
-    <link rel="stylesheet" href="/css/fiche.css">
-    <link rel="stylesheet" href="/css/materialize.min.css">
+
 
     <body>
      <header>
-        <div><img class="img"src="/images/uy1.png"></div>
-     </header>
-     <h3 style="text-align: center;"> Fiche de preinscription a <br>l'université de yaoundé 1
-          année 2020/2021
-     </h3>
 
-     <div class="row col s12 container contenu" >
+     </header>
+     <br>
+     <div class="container">
+         <button class="btn waves-effect waves-light blue center-block" type="submit" id="action" >Telecharger</button><br>
+     </div><br>
+
+     <div class="row col s12 container contenu"  id="contenu">
+         <div><img class="img"src="/images/uy1.png"></div>
+         <h3 style="text-align: center;"> Fiche de preinscription a <br>l'université de yaoundé 1
+             année 2020/2021
+         </h3>
+         <hr>
          <div class=" col s6">
             <h5> Etat civil</h5>
             <hr>
@@ -49,6 +56,7 @@
          </div>
          <div class=" col s6">
             <h5> Facultés et filière</h5>
+             <hr>
             <p>Etablissement:{{$etudiant->choix1->faculte->nom}} </p>
             <p><u><b>Filière</b></u></p>
                 <ul>
@@ -91,9 +99,19 @@
 
      </div>
 
+   <footer>
 
+   </footer>
 
+     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="/js/printThis.js"></script>
+     <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script>
 
+       $('#action').click(function () {
+            $('.contenu').printThis();
+       })
+    </script>
     </body>
 
 </html>

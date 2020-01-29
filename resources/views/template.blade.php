@@ -50,6 +50,7 @@
                     </div>
                     <button class="btn waves-effect waves-light teal center" type="submit" name="action">souscrire
                         <i class="material-icons right">send</i>
+                    </button>
                 </form>
 
             </div>
@@ -79,7 +80,7 @@
 <script>
     $(document).ready(function() {
         $('.loginForm').modal();
-    }
+    })
 </script>
 @yield('modalScript')
 
