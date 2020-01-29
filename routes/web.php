@@ -42,3 +42,4 @@ Route::post('/login', 'connexionController@traitement');
 Route::get('/deconnexion', 'connexionController@deconnexion')->name('logout');;
 Route::get('/register', 'connexionController@register')->name('register');
 Route::post('/register', 'connexionController@create');
+Route::post('/preinscription', 'EtudiantController@affiche');

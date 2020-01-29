@@ -127,6 +127,7 @@ class EtudiantController extends Controller
             'paiement_id'=> $request->get('paiement'),
             'transaction'=> $request->get('transaction'),
             'sexe'=> $request->get('sexe'),
+
             ]);
         $etudiant->save();
 
@@ -144,6 +145,18 @@ class EtudiantController extends Controller
     {
 
         return view('fiche', ['etudiant' => Etudiant::find($etudiant)]);
+    }
+    public function affiche(Request $request)
+    {
+        $this->validate($request,[
+            'code'=>['required']
+        ]);
+        $request->get('code');
+
+        $etudiant=Etudiant::find($request)->first();
+
+        return redirect()->route('etudiant.voir', $etudiant->id);
+
     }
 
     /**

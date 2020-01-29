@@ -35,7 +35,7 @@
             <p>Email :{{$etudiant->email}}</p>
             <p>telephone :{{$etudiant->telephone}}</p>
             <p>code:{{$etudiant->id}}</p>
-            <p>date de rendez vous :<b> 10/09/2020</b></p>
+            <p>date de rendez vous :<b> <?php $d=mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"));echo date('d-m-y',$d)?></b></p>
 
 
 

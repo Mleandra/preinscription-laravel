@@ -39,7 +39,7 @@ body {
 
 .banner-area {
     background: url('../images/hero.jpg');
-    
+
     background-size: cover;
     background-position: center center;
     height: 100vh;
@@ -147,7 +147,7 @@ article.card {
   article.card .thumb {
     width: auto;
     height: 260px;
-    
+
     background-size: cover;
     border-radius: 3px;
   }
@@ -305,13 +305,13 @@ article.card {
     background: url(../images/social2.svg) no-repeat center /cover;
   }
   .h{
-    background: url(../images/lettre\ 2.svg) no-repeat center /cover;
+    background: url(../images/lettre2.svg) no-repeat center /cover;
   }
   .user-avatar{
     vertical-align:middle;
     height: 60px;
     width: 60px;
-    
+
     border-radius: 50%;
     border:1px solid #ffffff;
     margin-right: 15px;
@@ -327,7 +327,7 @@ article.card {
     right: 15px;
     bottom: 10px;
     z-index:999999;
-    
+
   }
   .user-info{
     vertical-align:middle;
@@ -429,17 +429,17 @@ article.card {
 
 }
 .topheader {
-    
+
     padding: 50px;
     text-align: center;
   }
-  
+
   .pagecourant{
     background-color: darkviolet;
     color: inherit;
-  }*/
-  
- 
+  }
+
+
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -450,14 +450,14 @@ article.card {
 
     padding-top: 60px;
   }
-  
+
   .modal-content {
     background-color: #fefefe;
-   
+
     border: 20px #eeeeee solid;
-   
+
   }
-  
+
 
   .construction{
     top: 40px;
@@ -465,13 +465,13 @@ article.card {
     position: relative;
 
   }
-  
+
 .content{
   padding:20px;
 }
   .brand-logo > img {
     height: 65px;
-    width: 70 px;
+    width: 70px;
     border-radius:50% 50% ;
 
   }
@@ -480,12 +480,12 @@ article.card {
     width: 100px;
 
   }
-   
+
   h4 {
     text-align: center;
-    
+
   }
-  
+
 
   .menu-reduire {
       height: 55vh;

@@ -44,6 +44,9 @@ class CreateEtudiantsTable extends Migration
             $table->integer('paiement_id')->unsigned();
             $table->string('transaction');
             $table->string('sexe');
+            $table->string('email');
+            $table->string('delivre');
+            $table->string('matricule');
             $table->foreign('paiement_id')->references('id')->on('payements')->onDelete('cascade');
             $table->foreign('choix_1')->references('id')->on('filieres')->onDelete('cascade');
             $table->foreign('choix_2')->references('id')->on('filieres')->onDelete('cascade');

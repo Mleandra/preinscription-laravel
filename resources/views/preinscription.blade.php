@@ -58,21 +58,25 @@
     </div>
     </div>
     <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Consuter vos informations</h4>
-            <p>pour ce faire entrer le code mensionné sur votre fiche </p>
-            <br>
-            <div class="input-field col s12">
 
-                <input type="text" id="code-input" class="code">
-                <label for="code-input">entrer votre code </label>
+
+                <form method="post">
+                    {{csrf_field()}}
+                    <div class="modal-content">
+                            <h4>Consuter vos informations</h4>
+                            <p>pour ce faire entrer le code mensionné sur votre fiche </p>
+                            <br>
+                        <div class="input-field col s12">
+                            <input type="text" id="code-input" class="code" name ="code">
+                            <label for="code-input">entrer votre code </label>
+                        </div>
+                  </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">annuler</a>
+                        <button  type="submit" class="modal-close waves-effect waves-green btn-flat">envoyer</button>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">annuler</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">envoyer</a>
-        </div>
-    </div>
 @endsection
 @section("modalScript")
     <script>
