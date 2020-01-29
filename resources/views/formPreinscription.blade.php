@@ -72,7 +72,7 @@
             <br>
             <div class="input-field col s12">
 
-                <select id="sexe"  class="w3-select  infos"  " style="width: 50%;" name="sexe" required>
+                <select id="sexe"  class="w3-select  infos"   style="width: 50%;" name="sexe" required>
                     <option value="" selected disabled></option>
                     <option value="F">Feminin</option>
                     <option value="M">Masculin</option>
@@ -271,7 +271,7 @@
         <input type="number" class=" diplome w3-input " name="paper" >
 
         <br>
-        <span class="btn waves-effect waves-light teal right" onclick="Next('diplome')">Suivant
+        <button class="btn waves-effect waves-light teal right" onclick="Next('diplome')">Suivant
             <i class="material-icons right">send</i>
         </button>
 
@@ -360,7 +360,7 @@
             <br>
             <button class="btn waves-effect waves-light teal right" type="submit" name="action">valider
                 <i class="material-icons right">send</i>
-            </span>
+            </button>>
             <br> <br>
         </div>
     </div>

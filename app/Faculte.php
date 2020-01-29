@@ -8,6 +8,8 @@ class Faculte extends Model
 {
     public  function  filieres(){
         return $this->hasMany("App\Filiere");
+
     }
+    protected $fillable=['nom'];
     //
 }

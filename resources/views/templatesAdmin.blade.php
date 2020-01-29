@@ -28,8 +28,10 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="">Logout</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+
             </div>
         </li>
     </ul>
@@ -77,6 +79,7 @@
         </footer>
     </div>
 </div>
+@yield('script')
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>

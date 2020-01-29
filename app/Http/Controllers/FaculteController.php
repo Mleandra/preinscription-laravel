@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Faculte;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class FaculteController extends Controller
 {
@@ -16,6 +17,7 @@ class FaculteController extends Controller
     {
         return view('facultes', ['etudiants' => Faculte::all()]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +37,21 @@ class FaculteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+        'faculte' => 'required',
+            ]);
+
+        $faculte =New Faculte([
+            'nom'=>$request->get('faculte'),
+
+
+        ]);
+        $faculte->save();
+
+        return redirect()->route('admin.faculte');
+
     }
+
 
     /**
      * Display the specified resource.

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Filiere;
+use App\Faculte;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class FiliereController extends Controller
 {
@@ -14,8 +16,12 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        return view('filieres', ['etudiants' => Filiere::all()]);
+        $facultes = Faculte::all();
+        return view('filieres', ['etudiants' => Filiere::all(),'facultes'=>$facultes]);
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,6 +41,17 @@ class FiliereController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'filiere'=>'required',
+            'faculte' => 'required',
+        ]);
+        $filiere=New Filiere([
+            'nom'=>$request->get('filiere'),
+            'faculte_id'=> $request->get('faculte'),
+        ]);
+        $filiere->save();
+
+        return redirect()->route('admin.filiere');
         //
     }
 

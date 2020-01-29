@@ -10,7 +10,7 @@
 
     <body>
      <header>
-        <div><img class="img"src="images/uy1.png"></div>
+        <div><img class="img"src="/images/uy1.png"></div>
      </header>
      <h3 style="text-align: center;"> Fiche de preinscription a <br>l'université de yaoundé 1
           année 2020/2021

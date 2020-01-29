@@ -101,7 +101,7 @@ class EtudiantController extends Controller
             'nom' => $request->get('nom'),
             'prenom' => $request->get('prenom'),
             'date_naissance' => $request->get('date_naissance'),
-            'lieu_naissance'=> $request->get('date_naissance'),
+            'lieu_naissance'=> $request->get('lieu_naissance'),
             'langue'=> $request->get('langue'),
             'etat_civil'=> $request->get('etat_civil'),
             'adresse'=> $request->get('adresse'),
