@@ -158,7 +158,7 @@ class EtudiantController extends Controller
         $etudiant=Etudiant::find($request)->first();
         if($etudiant) {
 
-            return redirect()->route('etudiant.voir', $etudiant->id);
+            return view('fiche',['etudiant'=> $etudiant]);
         }
         return back();
     }
