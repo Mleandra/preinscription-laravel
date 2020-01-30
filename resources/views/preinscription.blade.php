@@ -58,9 +58,7 @@
     </div>
     </div>
     <div id="modal1" class="modal">
-
-
-                <form method="post">
+                <form method="post" action="/preinscription/">
                     {{csrf_field()}}
                     <div class="modal-content">
                             <h4>Consuter vos informations</h4>
@@ -70,7 +68,7 @@
                             <input type="text" id="code-input" class="code" name ="code">
                             <label for="code-input">entrer votre code </label>
                         </div>
-                  </div>
+                    </div>
                     <div class="modal-footer">
                         <a href="#!" class="modal-close waves-effect waves-red btn-flat">annuler</a>
                         <button  type="submit" class="modal-close waves-effect waves-green btn-flat">envoyer</button>
