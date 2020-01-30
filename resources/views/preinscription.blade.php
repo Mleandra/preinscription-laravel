@@ -58,7 +58,7 @@
     </div>
     </div>
     <div id="modal1" class="modal">
-                <form method="post" action="/preinscription/">
+                <form method="post" action="{{route('preinscription')}}">
                     {{csrf_field()}}
                     <div class="modal-content">
                             <h4>Consuter vos informations</h4>
