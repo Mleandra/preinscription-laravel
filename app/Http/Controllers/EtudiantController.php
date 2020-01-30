@@ -128,6 +128,7 @@ class EtudiantController extends Controller
             'transaction'=> $request->get('transaction'),
             'sexe'=> $request->get('sexe'),
             'email'=> $request->get('email'),
+            'dilivreur'=> $request->get('issuer'),
 
             ]);
         $etudiant->save();
@@ -155,9 +156,11 @@ class EtudiantController extends Controller
         $request->get('code');
 
         $etudiant=Etudiant::find($request)->first();
+        if($etudiant) {
 
-        return redirect()->route('etudiant.voir', $etudiant->id);
-
+            return redirect()->route('etudiant.voir', $etudiant->id);
+        }
+        return back();
     }
 
     /**

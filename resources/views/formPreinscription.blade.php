@@ -253,13 +253,16 @@
         <label for="annee">Année d'obtention:</label>
         <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;" name="annee_diplome" required value="{{ old('annee_diplome') }}">
         <br>
-        <label for="registration">Registration/exam number:</label>
+        <label for="registration">Matricule dilplome:</label>
         <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="exam_number" required value="{{ old('exam_number') }}">
         <br>
         <label for="jury">information sur le jury:</label>
         <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="infos_jury" required value="{{ old('infos_jury') }}">
         <br>
-        <label for="issuer">Matricule dilplome:</label>
+        <label for="moyenne">Moyenne:</label>
+        <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="moyenne" >
+        <br>
+        <label for="issuer">delivré par:</label>
         <input type="text" class="w3-input w3-animate-input diplome"  style="width: 50%;"  name="issuer" >
 
         <br>

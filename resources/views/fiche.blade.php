@@ -74,7 +74,7 @@
             <p>Année d'obtention:{{$etudiant->annee_diplome}} </p>
             <p>Moyenne:{{$etudiant->moyenne}} </p>
             <p>Infos jury:{{$etudiant->info_jury}} </p>
-            <p>Matricule dilplome : {{$etudiant->matricule}}</p>
+            <p>Matricule dilplome : {{$etudiant->exam_number}}</p>
             <p>Diplome delivrée par:{{$etudiant->issuer}} </p>
             <p>Date de delivrance:{{$etudiant->date_delivrence}} </p>
             <br>
