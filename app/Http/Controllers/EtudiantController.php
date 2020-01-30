@@ -128,7 +128,6 @@ class EtudiantController extends Controller
             'transaction'=> $request->get('transaction'),
             'sexe'=> $request->get('sexe'),
             'email'=> $request->get('email'),
-            'delivreur'=> $request->get('issuer'),
 
             ]);
         $etudiant->save();

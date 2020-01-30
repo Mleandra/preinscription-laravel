@@ -75,7 +75,7 @@
             <p>Moyenne:{{$etudiant->moyenne}} </p>
             <p>Infos jury:{{$etudiant->info_jury}} </p>
             <p>Matricule dilplome : {{$etudiant->exam_nomber}}</p>
-            <p>Diplome delivrée par:{{$etudiant->delivreur}} </p>
+
             <p>Date de delivrance:{{$etudiant->date_delivrence}} </p>
             <br>
 
