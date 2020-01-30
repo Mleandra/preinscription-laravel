@@ -128,7 +128,7 @@ class EtudiantController extends Controller
             'transaction'=> $request->get('transaction'),
             'sexe'=> $request->get('sexe'),
             'email'=> $request->get('email'),
-            'dilivreur'=> $request->get('issuer'),
+            'delivreur'=> $request->get('issuer'),
 
             ]);
         $etudiant->save();
@@ -153,9 +153,9 @@ class EtudiantController extends Controller
         $this->validate($request,[
             'code'=>['required']
         ]);
-        $request->get('code');
+        $code=$request->get('code');
 
-        $etudiant=Etudiant::find($request)->first();
+        $etudiant=Etudiant::findorfail($code);
         if($etudiant) {
 
             return view('fiche',['etudiant'=> $etudiant]);
