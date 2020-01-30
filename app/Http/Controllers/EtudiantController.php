@@ -155,7 +155,7 @@ class EtudiantController extends Controller
         ]);
         $code=$request->get('code');
 
-        $etudiant=Etudiant::findorfail($code);
+        $etudiant=Etudiant::findorFail($code);
         if($etudiant) {
 
             return view('fiche',['etudiant'=> $etudiant]);
